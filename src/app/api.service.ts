@@ -42,4 +42,8 @@ export class ApiService {
     getProductsByCategory(category: string): Observable<ProductResponse> {
         return this.http.get<ProductResponse>(`${this.apiUrl}/category/${category}`);
     }
+
+    getProductsByBrand(brand: string): Observable<ProductResponse> {
+        return this.http.get<ProductResponse>(`${this.apiUrl}/search?q=${brand}`);
+    }
 }

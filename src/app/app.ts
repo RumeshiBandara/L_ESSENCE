@@ -35,9 +35,9 @@ export class App implements OnInit {
   }
 
   initialLoad() {
-    this.apiService.getProductsByCategory('fragrances').subscribe(res => {
+    this.apiService.getProductsByBrand('Dior').subscribe(res => {
       this.products.set(res.products);
-      this.selectedCategory.set('fragrances');
+      this.selectedCategory.set('Dior Exclusive');
     });
   }
 
