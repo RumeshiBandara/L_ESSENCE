@@ -25,7 +25,7 @@ export class App implements OnInit {
   selectedProduct = signal<Product | null>(null);
 
   ngOnInit() {
-    this.loadProducts();
+    this.initialLoad();
     this.loadCategories();
   }
 
@@ -34,9 +34,17 @@ export class App implements OnInit {
     this.isScrolled.set(window.scrollY > 20);
   }
 
+  initialLoad() {
+    this.apiService.getProductsByCategory('fragrances').subscribe(res => {
+      this.products.set(res.products);
+      this.selectedCategory.set('fragrances');
+    });
+  }
+
   loadProducts() {
     this.apiService.getProducts().subscribe(res => {
       this.products.set(res.products);
+      this.selectedCategory.set('all');
     });
   }
 
